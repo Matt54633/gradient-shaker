@@ -16,8 +16,7 @@ struct ShakeDisplayView: View {
             Image("shaker")
                 .resizable()
                 .scaledToFit()
-                .frame(height: 30)
-                .padding(.trailing, 5)
+                .frame(height: 37.5)
             
             Text("Shake to Generate!")
                 .font(.title3)

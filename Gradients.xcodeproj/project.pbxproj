@@ -48,6 +48,7 @@
 		76591EFE2BD6E0670015BF51 /* SaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveView.swift; sourceTree = "<group>"; };
 		76591F012BD6E8F30015BF51 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		76591F032BD6EC610015BF51 /* GradientListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientListItemView.swift; sourceTree = "<group>"; };
+		76A58FF12BD91B7E00684E42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +73,7 @@
 		76591ECB2BD6CF530015BF51 = {
 			isa = PBXGroup;
 			children = (
+				76A58FF12BD91B7E00684E42 /* README.md */,
 				7653DE6F2BD7D94C00FF2224 /* .gitignore */,
 				76591ED62BD6CF530015BF51 /* Gradients */,
 				76591ED52BD6CF530015BF51 /* Products */,

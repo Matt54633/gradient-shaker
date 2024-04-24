@@ -98,7 +98,6 @@ class GradientViewModel: ObservableObject {
         
         self.changeColour()
 
-        
         let now = Date()
         guard now.timeIntervalSince(lastShakeTime) > 0.5 else { return }
         lastShakeTime = now
@@ -166,10 +165,10 @@ class GradientViewModel: ObservableObject {
     func exportAsTailwind(gradient: GradientModel) {
         let startColor = UIColor(ciColor: CIColor(string: gradient.startColour))
         let endColor = UIColor(ciColor: CIColor(string: gradient.endColour))
-        let startColorHex = startColor.toHexString()
-        let endColorHex = endColor.toHexString()
+        let startColorRGB = startColor.rgba
+        let endColorRGB = endColor.rgba
         let directionClass = angleToDirectionClass(angle: gradient.angle)
-        let tailwindGradient = "\(directionClass) from-[#\(startColorHex)] to-[#\(endColorHex)]"
+        let tailwindGradient = "\(directionClass) from-[rgb(\(startColorRGB.red * 255),\(startColorRGB.green * 255),\(startColorRGB.blue * 255))] to-[rgb(\(endColorRGB.red * 255),\(endColorRGB.green * 255),\(endColorRGB.blue * 255))]"
         
         UIPasteboard.general.string = tailwindGradient
         
@@ -187,24 +186,23 @@ class GradientViewModel: ObservableObject {
     }
     
     func angleToDirectionClass(angle: Double) -> String {
-        // Convert the angle to a Tailwind CSS direction class
         switch angle {
         case 0..<45:
-            return "bg-gradient-to-tr"
-        case 45..<90:
             return "bg-gradient-to-t"
+        case 45..<90:
+            return "bg-gradient-to-tr"
         case 90..<135:
-            return "bg-gradient-to-tl"
-        case 135..<180:
-            return "bg-gradient-to-l"
-        case 180..<225:
-            return "bg-gradient-to-bl"
-        case 225..<270:
-            return "bg-gradient-to-b"
-        case 270..<315:
-            return "bg-gradient-to-br"
-        default:
             return "bg-gradient-to-r"
+        case 135..<180:
+            return "bg-gradient-to-br"
+        case 180..<225:
+            return "bg-gradient-to-b"
+        case 225..<270:
+            return "bg-gradient-to-bl"
+        case 270..<315:
+            return "bg-gradient-to-l"
+        default:
+            return "bg-gradient-to-tl"
         }
     }
     
