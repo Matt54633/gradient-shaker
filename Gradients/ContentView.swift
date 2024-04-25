@@ -14,7 +14,8 @@ struct ContentView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Query private var gradients: [GradientModel]
     @Environment(\.modelContext) var context
-    
+    @Environment(\.scenePhase) private var scenePhase
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -29,12 +30,15 @@ struct ContentView: View {
                             .interactiveDismissDisabled()
                     }
             }
-            .onAppear {
-                viewModel.generateNewGradient(gradients: gradients, context: context)
+            .onChange(of: scenePhase) { oldPhase, newPhase in
+                if newPhase == .active {
+                    viewModel.generateNewGradient(gradients: gradients, context: context)
+                }
             }
         }
     }
 }
+
 
 #Preview {
     ContentView()
