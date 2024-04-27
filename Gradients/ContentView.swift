@@ -15,20 +15,32 @@ struct ContentView: View {
     @Query private var gradients: [GradientModel]
     @Environment(\.modelContext) var context
     @Environment(\.scenePhase) private var scenePhase
-
+    @Environment(\.horizontalSizeClass) var sizeClass
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                GradientView(viewModel: viewModel)
-                    .sheet(isPresented: $isPresented) {
+                if sizeClass == .compact {
+                    GradientView(viewModel: viewModel)
+                        .sheet(isPresented: $isPresented) {
+                            MenuView(viewModel: viewModel)
+                                .presentationDetents([.height(safeAreaInsets.bottom > 0 ? 60 : 80), .medium])
+                                .presentationBackground(.ultraThinMaterial)
+                                .presentationCornerRadius(50)
+                                .presentationDragIndicator(.visible)
+                                .presentationBackgroundInteraction(.enabled)
+                                .interactiveDismissDisabled()
+                            
+                        }
+                } else {
+                    NavigationSplitView {
                         MenuView(viewModel: viewModel)
-                            .presentationDetents([.height(safeAreaInsets.bottom > 0 ? 60 : 80), .medium])
-                            .presentationBackground(.ultraThinMaterial)
-                            .presentationCornerRadius(50)
-                            .presentationDragIndicator(.visible)
-                            .presentationBackgroundInteraction(.enabled)
-                            .interactiveDismissDisabled()
+                            .navigationTitle("Gradients")
+                    } detail: {
+                        GradientView(viewModel: viewModel)
                     }
+                    .tint(.primary)
+                }
             }
             .onChange(of: scenePhase) { oldPhase, newPhase in
                 if newPhase == .active {

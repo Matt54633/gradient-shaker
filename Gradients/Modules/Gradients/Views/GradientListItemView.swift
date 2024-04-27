@@ -12,17 +12,18 @@ struct GradientListItemView: View {
     let endColour: Color
     let angle: Double
     @ObservedObject var viewModel: GradientViewModel
+    @Environment(\.horizontalSizeClass) var sizeClass
     
     var body: some View {
         
         RoundedRectangle(cornerRadius: 10)
             .fill(LinearGradient(gradient: Gradient(colors: [startColour, endColour]), startPoint: UnitPoint(x: cos(angle), y: sin(angle)), endPoint: UnitPoint(x: cos(angle + .pi), y: sin(angle + .pi))))
-            .frame(height: 70)
+            .frame(height: sizeClass != .compact ? 70: 50)
             .padding(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.clear)
-                    .stroke(.white, lineWidth: 5)
+                    .stroke(sizeClass != .compact ? .white : .primary, lineWidth: 5)
                     .padding(10)
             )
         

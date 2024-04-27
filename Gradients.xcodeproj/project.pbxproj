@@ -25,6 +25,7 @@
 		76591F002BD6E0C10015BF51 /* SaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591EFE2BD6E0670015BF51 /* SaveView.swift */; };
 		76591F022BD6E8F30015BF51 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591F012BD6E8F30015BF51 /* MessageView.swift */; };
 		76591F042BD6EC610015BF51 /* GradientListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591F032BD6EC610015BF51 /* GradientListItemView.swift */; };
+		76F650882BDC58E8000932AB /* MacDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F650872BDC58E8000932AB /* MacDetector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		76591F012BD6E8F30015BF51 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		76591F032BD6EC610015BF51 /* GradientListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientListItemView.swift; sourceTree = "<group>"; };
 		76A58FF12BD91B7E00684E42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		76F650872BDC58E8000932AB /* MacDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		76591EE52BD6D04E0015BF51 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				76F650892BDD073E000932AB /* Onboarding */,
 				76591EFB2BD6E04B0015BF51 /* Buttons */,
 				76591EEC2BD6D0D20015BF51 /* Menu */,
 				76591EE62BD6D0550015BF51 /* Gradients */,
@@ -180,6 +183,7 @@
 			children = (
 				76591EF92BD6D8DB0015BF51 /* ShakeDetector.swift */,
 				7653DE6C2BD7BF4900FF2224 /* SafeAreaDetector.swift */,
+				76F650872BDC58E8000932AB /* MacDetector.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -203,6 +207,29 @@
 			sourceTree = "<group>";
 		};
 		76591EFD2BD6E05B0015BF51 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		76F650892BDD073E000932AB /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				76F6508A2BDD0744000932AB /* Views */,
+				76F6508B2BDD0747000932AB /* ViewModels */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		76F6508A2BDD0744000932AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		76F6508B2BDD0747000932AB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -287,6 +314,7 @@
 				76591F022BD6E8F30015BF51 /* MessageView.swift in Sources */,
 				76591EFA2BD6D8DB0015BF51 /* ShakeDetector.swift in Sources */,
 				76591EF12BD6D1890015BF51 /* GradientModel.swift in Sources */,
+				76F650882BDC58E8000932AB /* MacDetector.swift in Sources */,
 				76591F002BD6E0C10015BF51 /* SaveView.swift in Sources */,
 				7653DE732BD902AF00FF2224 /* ColorExtension.swift in Sources */,
 				76591EDA2BD6CF530015BF51 /* ContentView.swift in Sources */,
@@ -445,16 +473,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = matt54633.Gradients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -483,16 +511,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = matt54633.Gradients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

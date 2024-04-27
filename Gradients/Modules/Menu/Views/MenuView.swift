@@ -11,6 +11,7 @@ import SwiftData
 struct MenuView: View {
     @Query private var gradients: [GradientModel]
     @Environment(\.safeAreaInsets) private var safeAreaInsets
+    @Environment(\.horizontalSizeClass) var sizeClass
     @ObservedObject var viewModel: GradientViewModel
     
     var body: some View {
@@ -18,26 +19,31 @@ struct MenuView: View {
             
             VStack {
                 if geometry.size.height < 90 {
-                    ShakeDisplayView()
-                        .frame(height:  safeAreaInsets.bottom > 0 ? 60 + safeAreaInsets.bottom : 80)
-                } else {
                     
-                    ScrollView {
+                    if sizeClass != .compact {
+                        
                         ShakeDisplayView()
+                            .frame(height:  safeAreaInsets.bottom > 0 ? 60 + safeAreaInsets.bottom : 80)
+                        
+                    }
+                    
+                } else {
+                    ScrollView {
+            
+                        if sizeClass != .compact {
+                            ShakeDisplayView()
+                        }
                         
                         GradientsListView(viewModel: viewModel)
-                            
                         
                         if !gradients.isEmpty {
                             DeleteAllView()
                         }
                         
                     }
-                    .padding(.top, 28)
+                    .padding(.top, sizeClass != .compact ? 28 : 0)
                 }
-                
             }
-            
         }
     }
 }

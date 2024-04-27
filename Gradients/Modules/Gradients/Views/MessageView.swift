@@ -10,14 +10,23 @@ import SwiftUI
 struct MessageView: View {
     let message: String
     let image: String
+    let systemImage: Bool
     
     var body: some View {
         HStack {
             
-            Image(systemName: image)
-                .font(.title2)
+            if systemImage {
+                Image(systemName: image)
+                    .font(.title2)
+            } else {
+                Image(image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30)
+            }
             
             Text(message)
+                .fontDesign(.rounded)
             
         }
         .fontWeight(.semibold)
@@ -29,5 +38,5 @@ struct MessageView: View {
 }
 
 #Preview {
-    MessageView(message: "Saved", image: "checkmark.circle")
+    MessageView(message: "Saved", image: "checkmark.circle", systemImage: true)
 }
