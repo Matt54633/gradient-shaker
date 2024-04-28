@@ -11,7 +11,9 @@ import SwiftData
 struct GradientsListView: View {
     @Query private var gradients: [GradientModel]
     @Environment(\.modelContext) var context
+    @Environment(\.isOnMac) var isOnMac
     @ObservedObject var viewModel: GradientViewModel
+    @State private var isExporting = false
     
     var body: some View {
         let columns = [
@@ -41,8 +43,13 @@ struct GradientsListView: View {
                                 Image(systemName: "viewfinder")
                             }
                             
+                            
                             Button(action: {
-                                viewModel.capturePreviousSnapshot(gradient: gradient)
+                                viewModel.capturePreviousSnapshot(saveToPhotos: isOnMac ? false: true, gradient: gradient)
+                                
+                                if isOnMac {
+                                    isExporting = true
+                                }
                             }) {
                                 Text("Save to Photos")
                                 Image(systemName: "arrow.down.circle")
@@ -69,11 +76,19 @@ struct GradientsListView: View {
                                 viewModel.deleteGradient(gradient: gradient, context: context)
                             }
                         }
-            
+                    
                 }
             }
         }
         .padding()
+        .fileExporter(isPresented: $isExporting, document: ImageDocument(image: viewModel.snapshot), contentType: .png, defaultFilename: "snapshot") { result in
+            switch result {
+            case .success(_):
+                viewModel.animate($viewModel.isSaved)
+            case .failure(_):
+                viewModel.animate($viewModel.isErrored)
+            }
+        }
     }
 }
 

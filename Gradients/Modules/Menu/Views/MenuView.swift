@@ -22,17 +22,15 @@ struct MenuView: View {
                 if geometry.size.height < 90 {
                     
                     if UIDevice.current.userInterfaceIdiom == .phone {
-                        
-                        ShakeDisplayView()
+                        ShakeDisplayView(viewModel: viewModel)
                             .frame(height:  safeAreaInsets.bottom > 0 ? 60 + safeAreaInsets.bottom : 80)
-                        
                     }
                     
                 } else {
                     ScrollView {
                         
                         if UIDevice.current.userInterfaceIdiom == .phone {
-                            ShakeDisplayView()
+                            ShakeDisplayView(viewModel: viewModel)
                         }
                         
                         GradientsListView(viewModel: viewModel)

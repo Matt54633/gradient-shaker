@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftData
 import SWTools
 
-class GradientViewModel: ObservableObject {
+class GradientViewModel: NSObject, ObservableObject {
     
     @Published var startColour: Color = .cyan
     @Published var endColour: Color = .blue
@@ -18,7 +18,31 @@ class GradientViewModel: ObservableObject {
     @Published var snapshot: UIImage? = nil
     @Published var isSaved: Bool = false
     @Published var isCopied: Bool = false
+    @Published var isErrored: Bool = false
     @Published var lastShakeTime = Date.distantPast
+    
+    func animate(_ value: Binding<Bool>) {
+            withAnimation(.easeInOut(duration: 0.25)) {
+                value.wrappedValue = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation(.easeInOut(duration: 0.25)) {
+                    value.wrappedValue = false
+                }
+            }
+        }
+    
+    func shake(_ value: Binding<CGFloat>) {
+            withAnimation(.easeInOut(duration: 0.05).repeatCount(10, autoreverses: true)) {
+                value.wrappedValue = 10
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation {
+                    value.wrappedValue = 0
+                }
+            }
+        }
     
     func changeColour()  {
         let red1 = Double.random(in: 0...1)
@@ -34,7 +58,7 @@ class GradientViewModel: ObservableObject {
         angle = Double.random(in: 0...360)
     }
     
-    func captureSnapshot() {
+    func captureSnapshot(saveToPhotos: Bool) {
         let gradient = LinearGradient(gradient: Gradient(colors: [startColour, endColour]), startPoint: .init(x: cos(angle), y: sin(angle)), endPoint: .init(x: cos(angle + .pi), y: sin(angle + .pi)))
         let controller = UIHostingController(rootView: Rectangle().fill(gradient).edgesIgnoringSafeArea(.all))
         controller.view.frame = CGRect(origin: .zero, size: UIScreen.main.bounds.size)
@@ -47,19 +71,14 @@ class GradientViewModel: ObservableObject {
         UIGraphicsEndImageContext()
         
         snapshot = image
-        saveImageToPhotoLibrary()
         
-        withAnimation(.easeInOut(duration: 0.25)) {
-            isSaved = true
+        if saveToPhotos {
+            saveImageToPhotoLibrary()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            withAnimation(.easeInOut(duration: 0.25)) {
-                self.isSaved = false
-            }
-        }
+        
     }
     
-    func capturePreviousSnapshot(gradient: GradientModel) {
+    func capturePreviousSnapshot(saveToPhotos: Bool, gradient: GradientModel) {
         let startUIColor = UIColor(ciColor: CIColor(string: gradient.startColour))
         let endUIColor = UIColor(ciColor: CIColor(string: gradient.endColour))
         
@@ -75,24 +94,27 @@ class GradientViewModel: ObservableObject {
         UIGraphicsEndImageContext()
         
         snapshot = image
-        saveImageToPhotoLibrary()
+        
+        if saveToPhotos {
+            saveImageToPhotoLibrary()
+        }
         
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
-        
-        withAnimation(.easeInOut(duration: 0.25)) {
-            isSaved = true
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            withAnimation(.easeInOut(duration: 0.25)) {
-                self.isSaved = false
-            }
-        }
+    
     }
     
     func saveImageToPhotoLibrary() {
         guard let image = snapshot else { return }
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveImage(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+
+    @objc func saveImage(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if error == nil {
+            animate(Binding(get: { self.isSaved }, set: { self.isSaved = $0 }))
+        } else {
+            animate(Binding(get: { self.isErrored }, set: { self.isErrored = $0 }))
+        }
     }
     
     func generateNewGradient(gradients: [GradientModel], context: ModelContext) {

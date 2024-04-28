@@ -23,6 +23,7 @@
 		76591F022BD6E8F30015BF51 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591F012BD6E8F30015BF51 /* MessageView.swift */; };
 		76591F042BD6EC610015BF51 /* GradientListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591F032BD6EC610015BF51 /* GradientListItemView.swift */; };
 		76F650932BDE4DA9000932AB /* SWTools in Frameworks */ = {isa = PBXBuildFile; productRef = 76F650922BDE4DA9000932AB /* SWTools */; };
+		76F650962BDECC84000932AB /* ImageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F650952BDECC84000932AB /* ImageDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		76591F012BD6E8F30015BF51 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		76591F032BD6EC610015BF51 /* GradientListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientListItemView.swift; sourceTree = "<group>"; };
 		76A58FF12BD91B7E00684E42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		76F650952BDECC84000932AB /* ImageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDocument.swift; sourceTree = "<group>"; };
+		76F650972BDED35C000932AB /* Gradients.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gradients.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 		76591ED62BD6CF530015BF51 /* Gradients */ = {
 			isa = PBXGroup;
 			children = (
+				76F650972BDED35C000932AB /* Gradients.entitlements */,
+				76F650942BDECC7A000932AB /* Structs */,
 				7653DE6E2BD7D59B00FF2224 /* Info.plist */,
 				76591EE52BD6D04E0015BF51 /* Modules */,
 				76591ED72BD6CF530015BF51 /* GradientsApp.swift */,
@@ -210,6 +215,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		76F650942BDECC7A000932AB /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				76F650952BDECC84000932AB /* ImageDocument.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -297,6 +310,7 @@
 				76591EDA2BD6CF530015BF51 /* ContentView.swift in Sources */,
 				7616C7722BD6FB0200BE11E8 /* DeleteAllView.swift in Sources */,
 				76591EEF2BD6D0DD0015BF51 /* MenuView.swift in Sources */,
+				76F650962BDECC84000932AB /* ImageDocument.swift in Sources */,
 				76591ED82BD6CF530015BF51 /* GradientsApp.swift in Sources */,
 				76591EEB2BD6D0820015BF51 /* GradientView.swift in Sources */,
 			);
@@ -429,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Gradients/Gradients.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -439,7 +454,8 @@
 				INFOPLIST_FILE = Gradients/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Gradient Shaker";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app saves gradients to your photo library for later use!";
+				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Gradient Shaker saves your gradients to your downloads folder for later use!";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Gradient Shaker saves gradients to your photo library for later use!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Gradients/Gradients.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -477,7 +494,8 @@
 				INFOPLIST_FILE = Gradients/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Gradient Shaker";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app saves gradients to your photo library for later use!";
+				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Gradient Shaker saves your gradients to your downloads folder for later use!";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Gradient Shaker saves gradients to your photo library for later use!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

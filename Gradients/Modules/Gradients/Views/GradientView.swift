@@ -16,8 +16,7 @@ struct GradientView: View {
     @Environment(\.isOnMac) var isOnMac
     @ObservedObject var viewModel: GradientViewModel
     @State private var lastShakeTime = Date.distantPast
-    @State private var shakeOffset: CGFloat = 0
-    
+    @State private var shakeOffset: CGFloat = 0    
     
     var body: some View {
         ZStack {
@@ -31,16 +30,7 @@ struct GradientView: View {
                     if isOnMac {
                         viewModel.generateNewGradient(gradients: gradients, context: context)
                         
-                        withAnimation(.easeInOut(duration: 0.05).repeatCount(10, autoreverses: true)) {
-                            shakeOffset = 10
-                        }
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            withAnimation {
-                                shakeOffset = 0
-                            }
-                        }
-                        
+                        viewModel.shake($shakeOffset)
                     }
                 }
         }
@@ -58,6 +48,13 @@ struct GradientView: View {
                     .transition(.scale)
                     .padding(.top, sizeClass == .compact ? 15 : 0)
             }
+            
+            if viewModel.isErrored {
+                MessageView(message: "Failed to Save", image: "exclamationmark.circle", systemImage: true)
+                    .transition(.scale)
+                    .padding(.top, sizeClass == .compact ? 15 : 0)
+            }
+            
             if viewModel.isCopied {
                 MessageView(message: "Copied to Clipboard", image: "checkmark.circle", systemImage: true)
                     .transition(.scale)
@@ -67,19 +64,17 @@ struct GradientView: View {
         .overlay(alignment: .bottom) {
             if sizeClass == .regular {
                 MessageView(message: isOnMac ? "Click to Generate!" : "Shake to Generate!", image: "shaker", systemImage: false)
+                    .onTapGesture {
+                        if isOnMac {
+                            viewModel.generateNewGradient(gradients: gradients, context: context)
+                            
+                            viewModel.shake($shakeOffset)
+                        }
+                    }
                     .padding(.bottom, isOnMac ? 15 : 0)
                     .offset(x: shakeOffset)
                     .onShake {
-                        
-                        withAnimation(.easeInOut(duration: 0.05).repeatCount(10, autoreverses: true)) {
-                            shakeOffset = 10
-                        }
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            withAnimation {
-                                shakeOffset = 0
-                            }
-                        }
+                        viewModel.shake($shakeOffset)
                     }
             }
         }
@@ -96,3 +91,4 @@ struct GradientView: View {
 #Preview {
     GradientView(viewModel: GradientViewModel())
 }
+

@@ -10,6 +10,7 @@ import SWTools
 
 struct ShakeDisplayView: View {
     @State private var shakeOffset: CGFloat = 0
+    @ObservedObject var viewModel: GradientViewModel
     
     var body: some View {
         HStack {
@@ -28,23 +29,13 @@ struct ShakeDisplayView: View {
         .fontWeight(.bold)
         .offset(x: shakeOffset)
         .onShake {
-            
-            withAnimation(.easeInOut(duration: 0.05).repeatCount(10, autoreverses: true)) {
-                shakeOffset = 10
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                withAnimation {
-                    shakeOffset = 0
-                }
-            }
-            
+            viewModel.shake($shakeOffset)
         }
         .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
-    ShakeDisplayView()
+    ShakeDisplayView(viewModel: GradientViewModel())
 }
 
