@@ -10,9 +10,7 @@
 		7616C7702BD6F0B800BE11E8 /* GradientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616C76F2BD6F0B800BE11E8 /* GradientsListView.swift */; };
 		7616C7722BD6FB0200BE11E8 /* DeleteAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616C7712BD6FB0200BE11E8 /* DeleteAllView.swift */; };
 		7639C84D2BD7B0350067B972 /* ShakeDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639C84C2BD7B0350067B972 /* ShakeDisplayView.swift */; };
-		7653DE6D2BD7BF4900FF2224 /* SafeAreaDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653DE6C2BD7BF4900FF2224 /* SafeAreaDetector.swift */; };
 		7653DE702BD7D94C00FF2224 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7653DE6F2BD7D94C00FF2224 /* .gitignore */; };
-		7653DE732BD902AF00FF2224 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653DE722BD902AF00FF2224 /* ColorExtension.swift */; };
 		76591ED82BD6CF530015BF51 /* GradientsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591ED72BD6CF530015BF51 /* GradientsApp.swift */; };
 		76591EDA2BD6CF530015BF51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591ED92BD6CF530015BF51 /* ContentView.swift */; };
 		76591EDC2BD6CF540015BF51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76591EDB2BD6CF540015BF51 /* Assets.xcassets */; };
@@ -21,21 +19,18 @@
 		76591EEF2BD6D0DD0015BF51 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591EEE2BD6D0DD0015BF51 /* MenuView.swift */; };
 		76591EF12BD6D1890015BF51 /* GradientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591EF02BD6D1890015BF51 /* GradientModel.swift */; };
 		76591EF32BD6D1EC0015BF51 /* GradientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591EF22BD6D1EC0015BF51 /* GradientViewModel.swift */; };
-		76591EFA2BD6D8DB0015BF51 /* ShakeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591EF92BD6D8DB0015BF51 /* ShakeDetector.swift */; };
 		76591F002BD6E0C10015BF51 /* SaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591EFE2BD6E0670015BF51 /* SaveView.swift */; };
 		76591F022BD6E8F30015BF51 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591F012BD6E8F30015BF51 /* MessageView.swift */; };
 		76591F042BD6EC610015BF51 /* GradientListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591F032BD6EC610015BF51 /* GradientListItemView.swift */; };
-		76F650882BDC58E8000932AB /* MacDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F650872BDC58E8000932AB /* MacDetector.swift */; };
+		76F650932BDE4DA9000932AB /* SWTools in Frameworks */ = {isa = PBXBuildFile; productRef = 76F650922BDE4DA9000932AB /* SWTools */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7616C76F2BD6F0B800BE11E8 /* GradientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsListView.swift; sourceTree = "<group>"; };
 		7616C7712BD6FB0200BE11E8 /* DeleteAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllView.swift; sourceTree = "<group>"; };
 		7639C84C2BD7B0350067B972 /* ShakeDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDisplayView.swift; sourceTree = "<group>"; };
-		7653DE6C2BD7BF4900FF2224 /* SafeAreaDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaDetector.swift; sourceTree = "<group>"; };
 		7653DE6E2BD7D59B00FF2224 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7653DE6F2BD7D94C00FF2224 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		7653DE722BD902AF00FF2224 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		76591ED42BD6CF530015BF51 /* Gradients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gradients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76591ED72BD6CF530015BF51 /* GradientsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsApp.swift; sourceTree = "<group>"; };
 		76591ED92BD6CF530015BF51 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,12 +40,10 @@
 		76591EEE2BD6D0DD0015BF51 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		76591EF02BD6D1890015BF51 /* GradientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientModel.swift; sourceTree = "<group>"; };
 		76591EF22BD6D1EC0015BF51 /* GradientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewModel.swift; sourceTree = "<group>"; };
-		76591EF92BD6D8DB0015BF51 /* ShakeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDetector.swift; sourceTree = "<group>"; };
 		76591EFE2BD6E0670015BF51 /* SaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveView.swift; sourceTree = "<group>"; };
 		76591F012BD6E8F30015BF51 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		76591F032BD6EC610015BF51 /* GradientListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientListItemView.swift; sourceTree = "<group>"; };
 		76A58FF12BD91B7E00684E42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		76F650872BDC58E8000932AB /* MacDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,20 +51,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F650932BDE4DA9000932AB /* SWTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7653DE712BD902A400FF2224 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				7653DE722BD902AF00FF2224 /* ColorExtension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		76591ECB2BD6CF530015BF51 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				7653DE6E2BD7D59B00FF2224 /* Info.plist */,
-				7653DE712BD902A400FF2224 /* Extensions */,
-				76591EF42BD6D2200015BF51 /* Environment */,
 				76591EE52BD6D04E0015BF51 /* Modules */,
 				76591ED72BD6CF530015BF51 /* GradientsApp.swift */,
 				76591ED92BD6CF530015BF51 /* ContentView.swift */,
@@ -178,16 +162,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		76591EF42BD6D2200015BF51 /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				76591EF92BD6D8DB0015BF51 /* ShakeDetector.swift */,
-				7653DE6C2BD7BF4900FF2224 /* SafeAreaDetector.swift */,
-				76F650872BDC58E8000932AB /* MacDetector.swift */,
-			);
-			path = Environment;
-			sourceTree = "<group>";
-		};
 		76591EFB2BD6E04B0015BF51 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +226,9 @@
 			dependencies = (
 			);
 			name = Gradients;
+			packageProductDependencies = (
+				76F650922BDE4DA9000932AB /* SWTools */,
+			);
 			productName = Gradients;
 			productReference = 76591ED42BD6CF530015BF51 /* Gradients.app */;
 			productType = "com.apple.product-type.application";
@@ -280,6 +257,9 @@
 				Base,
 			);
 			mainGroup = 76591ECB2BD6CF530015BF51;
+			packageReferences = (
+				76F650912BDE4DA9000932AB /* XCRemoteSwiftPackageReference "SWTools" */,
+			);
 			productRefGroup = 76591ED52BD6CF530015BF51 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -312,13 +292,9 @@
 				76591F042BD6EC610015BF51 /* GradientListItemView.swift in Sources */,
 				7616C7702BD6F0B800BE11E8 /* GradientsListView.swift in Sources */,
 				76591F022BD6E8F30015BF51 /* MessageView.swift in Sources */,
-				76591EFA2BD6D8DB0015BF51 /* ShakeDetector.swift in Sources */,
 				76591EF12BD6D1890015BF51 /* GradientModel.swift in Sources */,
-				76F650882BDC58E8000932AB /* MacDetector.swift in Sources */,
 				76591F002BD6E0C10015BF51 /* SaveView.swift in Sources */,
-				7653DE732BD902AF00FF2224 /* ColorExtension.swift in Sources */,
 				76591EDA2BD6CF530015BF51 /* ContentView.swift in Sources */,
-				7653DE6D2BD7BF4900FF2224 /* SafeAreaDetector.swift in Sources */,
 				7616C7722BD6FB0200BE11E8 /* DeleteAllView.swift in Sources */,
 				76591EEF2BD6D0DD0015BF51 /* MenuView.swift in Sources */,
 				76591ED82BD6CF530015BF51 /* GradientsApp.swift in Sources */,
@@ -546,6 +522,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76F650912BDE4DA9000932AB /* XCRemoteSwiftPackageReference "SWTools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/matt54633/SWTools";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76F650922BDE4DA9000932AB /* SWTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76F650912BDE4DA9000932AB /* XCRemoteSwiftPackageReference "SWTools" */;
+			productName = SWTools;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 76591ECC2BD6CF530015BF51 /* Project object */;
 }

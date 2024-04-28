@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import SWTools
 
 struct GradientView: View {
     @Query private var gradients: [GradientModel]

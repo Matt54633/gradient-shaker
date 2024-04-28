@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SWTools
 
 struct ShakeDisplayView: View {
     @State private var shakeOffset: CGFloat = 0

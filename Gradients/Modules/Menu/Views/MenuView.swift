@@ -7,11 +7,12 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
+import SWTools
 
 struct MenuView: View {
     @Query private var gradients: [GradientModel]
     @Environment(\.safeAreaInsets) private var safeAreaInsets
-    @Environment(\.horizontalSizeClass) var sizeClass
     @ObservedObject var viewModel: GradientViewModel
     
     var body: some View {
@@ -20,7 +21,7 @@ struct MenuView: View {
             VStack {
                 if geometry.size.height < 90 {
                     
-                    if sizeClass != .compact {
+                    if UIDevice.current.userInterfaceIdiom == .phone {
                         
                         ShakeDisplayView()
                             .frame(height:  safeAreaInsets.bottom > 0 ? 60 + safeAreaInsets.bottom : 80)
@@ -29,8 +30,8 @@ struct MenuView: View {
                     
                 } else {
                     ScrollView {
-            
-                        if sizeClass != .compact {
+                        
+                        if UIDevice.current.userInterfaceIdiom == .phone {
                             ShakeDisplayView()
                         }
                         
@@ -41,7 +42,7 @@ struct MenuView: View {
                         }
                         
                     }
-                    .padding(.top, sizeClass != .compact ? 28 : 0)
+                    .padding(.top, UIDevice.current.userInterfaceIdiom == .phone ? 28 : 0)
                 }
             }
         }
