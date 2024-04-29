@@ -22,27 +22,27 @@ class GradientViewModel: NSObject, ObservableObject {
     @Published var lastShakeTime = Date.distantPast
     
     func animate(_ value: Binding<Bool>) {
+        withAnimation(.easeInOut(duration: 0.25)) {
+            value.wrappedValue = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             withAnimation(.easeInOut(duration: 0.25)) {
-                value.wrappedValue = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    value.wrappedValue = false
-                }
+                value.wrappedValue = false
             }
         }
+    }
     
     func shake(_ value: Binding<CGFloat>) {
-            withAnimation(.easeInOut(duration: 0.05).repeatCount(10, autoreverses: true)) {
-                value.wrappedValue = 10
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                withAnimation {
-                    value.wrappedValue = 0
-                }
+        withAnimation(.easeInOut(duration: 0.05).repeatCount(10, autoreverses: true)) {
+            value.wrappedValue = 10
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation {
+                value.wrappedValue = 0
             }
         }
+    }
     
     func changeColour()  {
         let red1 = Double.random(in: 0...1)
@@ -75,7 +75,6 @@ class GradientViewModel: NSObject, ObservableObject {
         if saveToPhotos {
             saveImageToPhotoLibrary()
         }
-        
     }
     
     func capturePreviousSnapshot(saveToPhotos: Bool, gradient: GradientModel) {
@@ -101,14 +100,14 @@ class GradientViewModel: NSObject, ObservableObject {
         
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
-    
+        
     }
     
     func saveImageToPhotoLibrary() {
         guard let image = snapshot else { return }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveImage(_:didFinishSavingWithError:contextInfo:)), nil)
     }
-
+    
     @objc func saveImage(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if error == nil {
             animate(Binding(get: { self.isSaved }, set: { self.isSaved = $0 }))
@@ -120,7 +119,7 @@ class GradientViewModel: NSObject, ObservableObject {
     func generateNewGradient(gradients: [GradientModel], context: ModelContext) {
         
         self.changeColour()
-
+        
         let now = Date()
         guard now.timeIntervalSince(lastShakeTime) > 0.5 else { return }
         lastShakeTime = now
@@ -129,14 +128,8 @@ class GradientViewModel: NSObject, ObservableObject {
         let endColourString = CIColor(color: UIColor(self.endColour)).stringRepresentation
         
         if !gradients.contains(where: { $0.startColour == startColourString && $0.endColour == endColourString && $0.angle == self.angle }) {
-            if gradients.count >= 30 {
-                context.delete(gradients.first!)
-            }
-            
-            context.insert(GradientModel(startColour: startColourString, endColour: endColourString, angle: self.angle))
-            
+            context.insert(GradientModel(startColour: startColourString, endColour: endColourString, angle: self.angle, isFavourite: false))
         }
-        
         
         let generator = UIImpactFeedbackGenerator(style: .heavy)
         generator.impactOccurred()
@@ -149,9 +142,6 @@ class GradientViewModel: NSObject, ObservableObject {
         self.startColour = Color(startUIColor)
         self.endColour = Color(endUIColor)
         self.angle = gradient.angle
-        
-        context.delete(gradient)
-        context.insert(GradientModel(startColour: gradient.startColour, endColour: gradient.endColour, angle: gradient.angle))
         
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()

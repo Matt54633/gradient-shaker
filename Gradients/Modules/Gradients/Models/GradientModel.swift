@@ -15,11 +15,13 @@ final class GradientModel: Identifiable {
     var startColour: String = ""
     var endColour: String = ""
     var angle: Double = 0
+    var isFavourite: Bool = false
     
-    init(startColour: String, endColour: String, angle: Double) {
+    init(startColour: String, endColour: String, angle: Double, isFavourite: Bool) {
         self.id = UUID().uuidString
         self.startColour = startColour
         self.endColour = endColour
         self.angle = angle
+        self.isFavourite = isFavourite
     }
 }

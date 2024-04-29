@@ -22,6 +22,9 @@ struct ContentView: View {
             VStack {
                 if sizeClass == .compact {
                     GradientView(viewModel: viewModel)
+                        .onAppear {
+                            viewModel.generateNewGradient(gradients: gradients, context: context)
+                        }
                         .sheet(isPresented: $isPresented) {
                             MenuView(viewModel: viewModel)
                                 .presentationDetents([.height(safeAreaInsets.bottom > 0 ? 60 : 80), .medium])
@@ -40,11 +43,6 @@ struct ContentView: View {
                         GradientView(viewModel: viewModel)
                     }
                     .tint(.primary)
-                }
-            }
-            .onChange(of: scenePhase) { oldPhase, newPhase in
-                if newPhase == .active {
-                    viewModel.generateNewGradient(gradients: gradients, context: context)
                 }
             }
         }

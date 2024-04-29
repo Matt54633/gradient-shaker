@@ -1,14 +1,14 @@
 //
-//  GradientsListView.swift
+//  GradientsFavouritesListView.swift
 //  Gradients
 //
-//  Created by Matt Sullivan on 22/04/2024.
+//  Created by Matt Sullivan on 29/04/2024.
 //
 
 import SwiftUI
 import SwiftData
 
-struct GradientsListView: View {
+struct GradientsFavouritesListView: View {
     @Query private var gradients: [GradientModel]
     @Environment(\.modelContext) var context
     @Environment(\.isOnMac) private var isOnMac
@@ -25,17 +25,17 @@ struct GradientsListView: View {
         
         HStack {
             
-            Image(systemName: "clock.arrow.circlepath")
+            Image(systemName: "star")
             
-            Text("Recents")
+            Text("Favourites")
             
         }
         .font(.headline)
         .fontWeight(.semibold)
         .fontDesign(.rounded)
+        .padding([.horizontal, .top])
         .foregroundStyle(isOnIpad ? .primary : Color(.white))
-        .padding(.horizontal)
-        .padding(.top, gradients.filter({ $0.isFavourite }).count > 0 ? 5 : 15)
+        
         
         if isOnIpad {
             Divider()
@@ -45,7 +45,7 @@ struct GradientsListView: View {
         
         LazyVGrid(columns: columns, spacing: 0) {
             
-            ForEach(gradients.reversed().filter { $0.isFavourite == false }, id: \.self) { gradient in
+            ForEach(gradients.reversed().filter { $0.isFavourite }, id: \.self) { gradient in
                 
                 let startUIColor = UIColor(ciColor: CIColor(string: gradient.startColour))
                 let endUIColor = UIColor(ciColor: CIColor(string: gradient.endColour))
@@ -122,5 +122,5 @@ struct GradientsListView: View {
 }
 
 #Preview {
-    GradientsListView(viewModel: GradientViewModel())
+    GradientsFavouritesListView(viewModel: GradientViewModel())
 }

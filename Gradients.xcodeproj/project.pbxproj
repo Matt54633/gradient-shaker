@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7616C7702BD6F0B800BE11E8 /* GradientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616C76F2BD6F0B800BE11E8 /* GradientsListView.swift */; };
-		7616C7722BD6FB0200BE11E8 /* DeleteAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616C7712BD6FB0200BE11E8 /* DeleteAllView.swift */; };
+		7616C7722BD6FB0200BE11E8 /* ClearRecentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616C7712BD6FB0200BE11E8 /* ClearRecentsView.swift */; };
 		7639C84D2BD7B0350067B972 /* ShakeDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639C84C2BD7B0350067B972 /* ShakeDisplayView.swift */; };
 		7653DE702BD7D94C00FF2224 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7653DE6F2BD7D94C00FF2224 /* .gitignore */; };
 		76591ED82BD6CF530015BF51 /* GradientsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591ED72BD6CF530015BF51 /* GradientsApp.swift */; };
@@ -24,11 +24,12 @@
 		76591F042BD6EC610015BF51 /* GradientListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76591F032BD6EC610015BF51 /* GradientListItemView.swift */; };
 		76F650932BDE4DA9000932AB /* SWTools in Frameworks */ = {isa = PBXBuildFile; productRef = 76F650922BDE4DA9000932AB /* SWTools */; };
 		76F650962BDECC84000932AB /* ImageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F650952BDECC84000932AB /* ImageDocument.swift */; };
+		76F650992BE02879000932AB /* GradientsFavouritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F650982BE02879000932AB /* GradientsFavouritesListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7616C76F2BD6F0B800BE11E8 /* GradientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsListView.swift; sourceTree = "<group>"; };
-		7616C7712BD6FB0200BE11E8 /* DeleteAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllView.swift; sourceTree = "<group>"; };
+		7616C7712BD6FB0200BE11E8 /* ClearRecentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearRecentsView.swift; sourceTree = "<group>"; };
 		7639C84C2BD7B0350067B972 /* ShakeDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDisplayView.swift; sourceTree = "<group>"; };
 		7653DE6E2BD7D59B00FF2224 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7653DE6F2BD7D94C00FF2224 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		76A58FF12BD91B7E00684E42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		76F650952BDECC84000932AB /* ImageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDocument.swift; sourceTree = "<group>"; };
 		76F650972BDED35C000932AB /* Gradients.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gradients.entitlements; sourceTree = "<group>"; };
+		76F650982BE02879000932AB /* GradientsFavouritesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsFavouritesListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +107,6 @@
 		76591EE52BD6D04E0015BF51 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				76F650892BDD073E000932AB /* Onboarding */,
 				76591EFB2BD6E04B0015BF51 /* Buttons */,
 				76591EEC2BD6D0D20015BF51 /* Menu */,
 				76591EE62BD6D0550015BF51 /* Gradients */,
@@ -130,6 +131,7 @@
 				76591F012BD6E8F30015BF51 /* MessageView.swift */,
 				76591F032BD6EC610015BF51 /* GradientListItemView.swift */,
 				7616C76F2BD6F0B800BE11E8 /* GradientsListView.swift */,
+				76F650982BE02879000932AB /* GradientsFavouritesListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,35 +182,12 @@
 			isa = PBXGroup;
 			children = (
 				76591EFE2BD6E0670015BF51 /* SaveView.swift */,
-				7616C7712BD6FB0200BE11E8 /* DeleteAllView.swift */,
+				7616C7712BD6FB0200BE11E8 /* ClearRecentsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
 		76591EFD2BD6E05B0015BF51 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		76F650892BDD073E000932AB /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				76F6508A2BDD0744000932AB /* Views */,
-				76F6508B2BDD0747000932AB /* ViewModels */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		76F6508A2BDD0744000932AB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		76F6508B2BDD0747000932AB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -304,11 +283,12 @@
 				76591EF32BD6D1EC0015BF51 /* GradientViewModel.swift in Sources */,
 				76591F042BD6EC610015BF51 /* GradientListItemView.swift in Sources */,
 				7616C7702BD6F0B800BE11E8 /* GradientsListView.swift in Sources */,
+				76F650992BE02879000932AB /* GradientsFavouritesListView.swift in Sources */,
 				76591F022BD6E8F30015BF51 /* MessageView.swift in Sources */,
 				76591EF12BD6D1890015BF51 /* GradientModel.swift in Sources */,
 				76591F002BD6E0C10015BF51 /* SaveView.swift in Sources */,
 				76591EDA2BD6CF530015BF51 /* ContentView.swift in Sources */,
-				7616C7722BD6FB0200BE11E8 /* DeleteAllView.swift in Sources */,
+				7616C7722BD6FB0200BE11E8 /* ClearRecentsView.swift in Sources */,
 				76591EEF2BD6D0DD0015BF51 /* MenuView.swift in Sources */,
 				76F650962BDECC84000932AB /* ImageDocument.swift in Sources */,
 				76591ED82BD6CF530015BF51 /* GradientsApp.swift in Sources */,
@@ -465,7 +445,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = matt54633.Gradients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -505,7 +485,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = matt54633.Gradients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -1,5 +1,5 @@
 //
-//  DeleteAllView.swift
+//  ClearRecentsView.swift
 //  Gradients
 //
 //  Created by Matt Sullivan on 22/04/2024.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct DeleteAllView: View {
+struct ClearRecentsView: View {
     @Query private var gradients: [GradientModel]
     @Environment(\.modelContext) var context
     @State private var showingConfirmation = false
@@ -17,31 +17,31 @@ struct DeleteAllView: View {
         Button {
             showingConfirmation = true
         } label: {
-            
-            Text("Delete All")
+            Text("Clear Recents")
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 5)
-            
         }
         .tint(.red)
         .fontWeight(.semibold)
         .fontDesign(.rounded)
         .buttonBorderShape(.roundedRectangle(radius: 15))
         .buttonStyle(.borderedProminent)
-        .padding(.horizontal)
-        .alert("Delete All Gradients", isPresented: $showingConfirmation, actions: {
-            Button("Delete", role: .destructive) {
+        .padding([.horizontal, .bottom])
+        .alert("Clear Recents", isPresented: $showingConfirmation, actions: {
+            Button("Clear", role: .destructive) {
                 for gradient in gradients {
-                    context.delete(gradient)
+                    if !gradient.isFavourite {
+                        context.delete(gradient)
+                    }
                 }
             }
             Button("Cancel", role: .cancel) {}
         }, message: {
-            Text("Are you sure you want to delete all gradients?")
+            Text("Are you sure you want to clear all recents?")
         })
     }
 }
 
 #Preview {
-    DeleteAllView()
+    ClearRecentsView()
 }
