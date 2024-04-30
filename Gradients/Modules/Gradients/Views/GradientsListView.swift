@@ -43,7 +43,7 @@ struct GradientsListView: View {
         }
         
         
-        LazyVGrid(columns: columns, spacing: 0) {
+        LazyVGrid(columns: columns, spacing: 5) {
             
             ForEach(gradients.reversed().filter { $0.isFavourite == false }, id: \.self) { gradient in
                 
